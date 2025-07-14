@@ -132,7 +132,7 @@ function inscription($inscription)
 {
     $sql = "INSERT INTO final_membre (nom, date_de_naissance, email, genre,ville,mdp,image_profil) VALUES ('%s', '%s', '%s', '%s','%s','%s', '%s')";
     $sql = sprintf($sql, $inscription['nom'], $inscription['dtn'], $inscription['email'], $inscription['genre'], $inscription["ville"], $inscription["mdp"], $inscription["image_profil"]);
-    make_request($sql);    
+    make_request($sql);
 }
 
 function log_in($logInfo)
@@ -142,4 +142,32 @@ function log_in($logInfo)
 
     $result = fetch_result($sql);
     return $result;
+}
+
+function addObjet($objet)
+{
+    $sql = "INSERT INTO final_objet (nom_objet, id_categorie, id_membre) VALUES ('%s', '%s', '%s')";
+    $sql = sprintf($sql, $objet['nom_objet'], $objet['id_categorie'], $objet['id_membre']);
+    $result = make_request($sql);
+
+    if ($result) {
+        $id_objet = "select max(id_objet) as id_objet from final_objet where nom_objet = '%s' and id_categorie = '%s' and id_membre = '%s'";
+        $id_objet = sprintf($id_objet, $objet['nom_objet'], $objet['id_categorie'], $objet['id_membre']);
+        $id_objet = fetch_result($id_objet);
+        if (isset($objet['image_profil'])) {
+            $sql = "INSERT INTO final_images_objet (id_objet, nom_image) VALUES ('%s', '%s')";
+            $sql = sprintf($sql, $id_objet, $objet['image_profil']);
+            make_request($sql);
+        }
+        return $id_objet;
+    } else {
+        return false;
+    }
+}
+
+function addImageObjet($id_objet, $image)
+{
+    $sql = "INSERT INTO final_images_objet (id_objet, nom_image) VALUES ('%s', '%s')";
+    $sql = sprintf($sql, $id_objet, $image);
+    return make_request($sql);
 }
