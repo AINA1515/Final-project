@@ -4,7 +4,7 @@ if (isset($_SESSION['membre'])) {
 }
 ?>
 
-<nav class="navbar navbar-expand-lg bg-white">
+<nav class="navbar navbar-expand-lg shadow ">
     <div class="container-fluid">
         <div class="navbar-brand">
             <span>User: <a href="#" class="link-underline link-underline-opacity-0"> <?= $membre['nom'] ?></a></span>
