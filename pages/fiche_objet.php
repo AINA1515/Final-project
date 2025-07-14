@@ -8,6 +8,7 @@ if (!isset($_SESSION["membre"])) {
 }
 
 $objet = getObjet($_GET['id_objet'] ?? null);
+$allImage= getAllImageObjet($_SESSION["membre"]["id_membre"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,15 @@ $objet = getObjet($_GET['id_objet'] ?? null);
 </head>
 <body>
 
-    
+    <?php 
+        foreach($allImage as $image) {
+            if ($image['id_objet'] == $objet['id_objet']) {
+            ?> <img src='../assets/uploads/<?= $image['nom_image']?>' alt='' class='thumbnails'style='max-width: 300px; height: 100px' >
+            <?php }
+        }
+    ?>
+
+
     
 </body>
 </html>

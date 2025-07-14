@@ -58,20 +58,22 @@ $allcategorie = getListCategorie();
                     <div class="col-9 row " class="liste_objet">
                         <?php foreach ($liste_objet as $objet) { ?>
                             <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <img src="../assets/uploads/<?= $objet['nom_image'] ?: "default_object.png"; ?>" class="card-img-top thumbnails" alt="<?= $objet['nom']; ?>">
+                                <a href="fiche_objet.php?id_objet=<?= $objet['id_objet'] ?>">
+                                    <div class="card">
+                                        <img src="../assets/uploads/<?= $objet['nom_image'] ?: "default_object.png"; ?>" class="card-img-top thumbnails" alt="<?= $objet['nom']; ?>">
 
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
-                                        <p class="card-text">Catégorie: <?= $objet['nom_categorie']; ?></p>
-                                        <p class="card-text">Membre: <?= $objet['nom']; ?></p>
-                                        <?php if (isset($objet['date_emprunt'])) { ?>
-                                            <span class="badge bg-warning position-absolute top-0 end-0 m-2">Non Disponible</span>
-                                            <p class="card-text">Date de retour: <?= $objet['date_retour'] ?></p>
-                                        <?php } ?>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
+                                            <p class="card-text">Catégorie: <?= $objet['nom_categorie']; ?></p>
+                                            <p class="card-text">Membre: <?= $objet['nom']; ?></p>
+                                            <?php if (isset($objet['date_emprunt'])) { ?>
+                                                <span class="badge bg-warning position-absolute top-0 end-0 m-2">Non Disponible</span>
+                                                <p class="card-text">Date de retour: <?= $objet['date_retour'] ?></p>
+                                            <?php } ?>
 
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>

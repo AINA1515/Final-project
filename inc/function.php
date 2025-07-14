@@ -103,14 +103,11 @@ function getListObjet()
 
 function getObjet($id_objet)
 {
-    $sql = "select fi.nom_image, from final_image_objet fi join final_objet fo on fi.id_objet = fo.id_objet where fo.id_objet = '%s'";
+    $sql = "select fi.nom_image,fo.id_objet from final_images_objet fi right join final_objet fo on fi.id_objet = fo.id_objet where fo.id_objet = '%s'";
     $sql = sprintf($sql, $id_objet);
     $result = fetch_result($sql);
-    if ($result) {
         return $result;
-    } else {
-        return false;
-    }
+    
 }
 
 function getAllImageObjet($id_membre)

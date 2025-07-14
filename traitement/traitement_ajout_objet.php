@@ -16,5 +16,5 @@ var_dump($objet);
 
 echo addObjet($objet);
 
-// header("location:../pages/liste_objet.php");
+header("location:../pages/liste_objet.php");
 ?>
