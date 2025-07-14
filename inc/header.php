@@ -15,7 +15,7 @@ if (isset($_SESSION['membre'])) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/index.php" aria-expanded="true">Home</a>
+                    <a class="nav-link" href="../pages/liste_objet.php" aria-expanded="true">Home</a>
                 </li>
 
                 <li class="nav-item">

@@ -82,10 +82,6 @@ $allcategorie = getListCategorie();
         </section>
     </main>
 
-    <footer>
-        <?php include("../inc/footer.php"); ?>
-    </footer>
-
     <script src="../assets/scripts/js/bootstrap.bundle.min.js"></script>
 </body>
 
