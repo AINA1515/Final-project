@@ -1,0 +1,9 @@
+TACHE:
+    _page de login/inscription:
+        _formulaire :
+            _inscription(nom, date de naissance, genre, email, ville, mdp, pdp) (ok)
+            _login (email, mdp)
+    _page liste objets:
+        _liste tout les objets avec la date de retour en cas d'emprunt
+
+    _ ajout d'un filtre par categorie pour la liste d'objets
