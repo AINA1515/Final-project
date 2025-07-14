@@ -3,7 +3,7 @@ require("../inc/function.php");
 
 session_start();
 
-if(!isset($_SESSION["idMembre"])){
+if(!isset($_SESSION["id_membre"])){
     header("Location: ../index.php");
 }
 

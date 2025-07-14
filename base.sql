@@ -1,6 +1,3 @@
-create database finalbase;
-
-use finalbase;
 
 create table
     final_membre (

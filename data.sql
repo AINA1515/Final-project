@@ -26,7 +26,7 @@ VALUES
 INSERT INTO final_objet (nom_objet, id_categorie, id_membre)
 VALUES
 -- Esthetique (id_categorie = 1)
-('Seche-cheveux professionnel', 1, 1),
+('Seche cheveux professionnel', 1, 1),
 ('Kit de maquillage complet', 1, 1),
 -- Bricolage (id_categorie = 2)
 ('Perceuse a percussion', 2, 1),
@@ -57,7 +57,7 @@ VALUES
 -- Cuisine
 ('Machine a cafe expresso', 4, 2),
 ('Blender haute puissance', 4, 2),
-('Crêpiere electrique', 4, 2);
+('Crepiere electrique', 4, 2);
 
 
 
@@ -76,7 +76,7 @@ VALUES
 ('Chandelles de garage', 3, 3),
 -- Cuisine
 ('Friteuse sans huile', 4, 3),
-('Moule a gâteau silicone', 4, 3);
+('Moule a gateau silicone', 4, 3);
 
 
 
@@ -94,8 +94,8 @@ VALUES
 ('Jack de levage', 3, 4),
 -- Cuisine
 ('Autocuiseur electrique', 4, 4),
-('Machine a glaçons', 4, 4),
-('Grille-pain professionnel', 4, 4);
+('Machine a glacons', 4, 4),
+('Grille pain professionnel', 4, 4);
 
 
 --EMPRUNTS
