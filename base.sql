@@ -51,4 +51,4 @@ create table
         FOREIGN KEY (id_membre) REFERENCES final_membre (id_membre) ON DELETE CASCADE
     );
 
-    
+alter table final_objet add column etats varchar(20) default 'ok';

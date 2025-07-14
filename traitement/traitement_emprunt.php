@@ -9,7 +9,9 @@ if(!isset($_SESSION["membre"])){
 
 $jour = $_POST["nbrjour"] ?? null;
 $id_objet = $_POST["id_objet"] ?? null;
+$id_membre = $_SESSION["membre"]["id_membre"];
 
-$date= calculdatederetour($jour, $id_objet);
+$date= calculdatederetour($id_membre, $jour, $id_objet);
 
+header("Location: ../pages/liste_objet.php");
 ?>

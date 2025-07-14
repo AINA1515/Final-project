@@ -92,11 +92,11 @@ function savefile($fichier)
 
 function getListObjet()
 {
-    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
+    $sql = "SELECT f.id_objet, f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
             FROM final_objet f JOIN final_membre m ON f.id_membre = m.id_membre
             JOIN final_categorie_objet c ON f.id_categorie = c.id_categorie
             LEFT JOIN final_images_objet i ON f.id_objet = i.id_objet
-            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet";
+            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet group by f.id_objet";
     $result = request_to_array($sql);
     return $result;
 }
@@ -130,7 +130,7 @@ function getFilteredListObjet($categorie)
             FROM final_objet f JOIN final_membre m ON f.id_membre = m.id_membre
             JOIN final_categorie_objet c ON f.id_categorie = c.id_categorie
             LEFT JOIN final_images_objet i ON f.id_objet = i.id_objet
-            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet";
+            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet group by f.id_objet";
     $sql = $sql." where ";
     $sql = $sql.implode( " or " ,$conditions); 
     $result = request_to_array($sql);
@@ -207,10 +207,10 @@ function calculEmpreint($nbrjour)
     return $result['date_retour'];
 }
 
-function calculdatederetour($nbrjour,$id_objet)
+function calculdatederetour($id_membre, $nbrjour,$id_objet)
 {
-    $sql = "insert into final_emprunt (id_objet,date_emprunt,date_retour) values ('%s',NOW(),DATE_ADD(NOW(), INTERVAL '%s' DAY))";
-    $sql = sprintf($sql, $id_objet, $nbrjour);
+    $sql = "insert into final_emprunt (id_objet,id_membre, date_emprunt,date_retour) values ('%s', '%s', NOW(), DATE_ADD(NOW(), INTERVAL '%s' DAY))";
+    $sql = sprintf($sql,  $id_objet, $id_membre, $nbrjour);
     make_request($sql);
 }
 
@@ -220,4 +220,14 @@ function calculDifferencedeDate($emprunt)
     $sql = sprintf($sql, $emprunt["date_retour"]);
     $result = fetch_result($sql);
     return $result['diff'];
+}
+
+function get_historique_emprunt($id_membre){
+    $sql = "SELECT e.id_emprunt, e.date_emprunt, e.date_retour, o.nom_objet, o.id_objet 
+            FROM final_emprunt e 
+            JOIN final_objet o ON e.id_objet = o.id_objet 
+            WHERE e.id_membre = '%s'";
+    $sql = sprintf($sql, $id_membre);
+    $result = request_to_array($sql);
+    return $result;
 }

@@ -72,7 +72,7 @@ $allcategorie = getListCategorie();
                                             <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
                                             <p class="card-text">Catégorie: <?= $objet['nom_categorie']; ?></p>
                                             <p class="card-text">Membre: <?= $objet['nom']; ?></p>
-                                            <?php if (isset($objet['date_emprunt'])) { ?>
+                                            <?php if (isset($objet['date_retour'])) { ?>
                                                 <span class="badge bg-warning position-absolute top-0 end-0 m-2">Disponible dans </span>
                                                 <p class="card-text">Date de retour: <?= $objet['date_retour'] ?></p>
                                             <?php } else{?>

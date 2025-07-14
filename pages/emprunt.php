@@ -34,7 +34,7 @@ $_GET["id_objet"] = $_GET["id_objet"] ?? null;
                     </div>
                     <div class="col-md-12">
                         <label for="nbrjour" class="form-label">Nombre de jour de l'emprunt: </label>
-                        <input type="number" name="id_objet" id="nbrjour" class="form-control" required>
+                        <input type="number" name="nbrjour" id="nbrjour" class="form-control" required>
                         <input type="hidden" name="id_objet" id="" value="<?= $_GET["id_objet"] ?>">
                     </div>
                     <div class="col-md-12">
@@ -44,6 +44,7 @@ $_GET["id_objet"] = $_GET["id_objet"] ?? null;
             </div>
 
         </form>
+    <script src="../assets/scripts/js/bootstrap.bundle.min.js"></script>
 
     </body>
 
