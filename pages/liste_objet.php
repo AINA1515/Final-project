@@ -26,6 +26,7 @@ $allcategorie = getListCategorie();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste objet</title>
     <link rel="stylesheet" href="../assets/scripts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/scripts/css/style.css">
 </head>
 
 <body>
@@ -34,42 +35,51 @@ $allcategorie = getListCategorie();
     </header>
 
     <main>
-
         <div class="container mt-3 ">
-            <div class="row mb-4">
-                <form action="liste_objet.php" method="post" class="row mt-3">
-                    <h1>Filtre par Categorie</h1>
-                    <?php foreach ($allcategorie as $categorie) { ?>
-                        <div class="form-check col">
-                            <input class="form-check-input" name="categorie[]" id="<?= $categorie["id_categorie"] ?>" type="checkbox" value="<?= $categorie["id_categorie"] ?>" id="flexCheckChecked">
-                            <label class="form-check-label" for="<?= $categorie["id_categorie"] ?>">
-                                <?= $categorie["nom_categorie"] ?>
-                            </label>
-                        </div>
-                    <?php } ?>
-                    <div class="col-12">
-                        <input type="submit" value="Filtrer" class="btn btn-primary">
-                    </div>
-                </form>
-            </div>
             <div class="row">
-                <?php foreach ($liste_objet as $objet) { ?>
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="../assets/uploads/<?php echo $objet['nom_image'] ?: "default_profil.jpg"; ?>" class="card-img-top thumbnails" alt="<?php echo $objet['nom']; ?>">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $objet['nom_objet']; ?></h5>
-                                <p class="card-text">Catégorie: <?php echo $objet['nom_categorie']; ?></p>
-                                <p class="card-text">Membre: <?php echo $objet['nom']; ?></p>
-                                <p class="card-text">Date d'emprunt: <?php echo $objet['date_emprunt'] ? $objet['date_emprunt'] : 'Non emprunté'; ?></p>
+
+                <div class="col-3 mb-4">
+                    <form action="liste_objet.php" method="post" class="row mt-3">
+                        <h1>Filtre par Categorie</h1>
+                        <?php foreach ($allcategorie as $categorie) { ?>
+                            <div class="form-check col">
+                                <input class="form-check-input" name="categorie[]" id="<?= $categorie["id_categorie"] ?>" type="checkbox" value="<?= $categorie["id_categorie"] ?>" id="flexCheckChecked">
+                                <label class="form-check-label" for="<?= $categorie["id_categorie"] ?>">
+                                    <?= $categorie["nom_categorie"] ?>
+                                </label>
+                            </div>
+                        <?php } ?>
+                        <div class="col-12">
+                            <input type="submit" value="Filtrer" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-9 row">
+                    <?php foreach ($liste_objet as $objet) { ?>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="../assets/uploads/<?= $objet['nom_image'] ?: "default_object.png"; ?>" class="card-img-top thumbnails" alt="<?= $objet['nom']; ?>">
+
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
+                                    <p class="card-text">Catégorie: <?= $objet['nom_categorie']; ?></p>
+                                    <p class="card-text">Membre: <?= $objet['nom']; ?></p>
+                                    <?php if (isset($objet['date_emprunt'])) { ?>
+                                        <span class="badge bg-warning position-absolute top-0 end-0 m-2">Non Disponible</span>
+                                        <p class="card-text">Date de retour: <?= $objet['date_retour'] ?></p>
+                                    <?php } ?>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </main>
-
+    <footer>
+        <?php include("../inc/footer.php"); ?>
+    </footer>
     <script src="../assets/scripts/js/bootstrap.bundle.min.js"></script>
 </body>
 
