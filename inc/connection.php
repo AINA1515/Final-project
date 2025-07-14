@@ -2,7 +2,7 @@
 function dbconnect()
 {
     static $connect = null;
-    $bdd_name = "employees";
+    $bdd_name = "finalbase";
     $mdp = "";
     $user = "root";
     $host = "localhost";

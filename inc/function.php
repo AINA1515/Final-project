@@ -89,3 +89,33 @@ function savefile($fichier)
         echo "Aucun fichier reçu.";
     }
 }
+
+function getListObjet()
+{
+    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.* 
+            FROM final_objet f join final_membre m where f.id_membre = m.id_membre";
+    $result = request_to_array($sql);
+    return $result;
+}
+
+function getFilteredListObjet($categorie)
+{
+    $conditions = array();
+    foreach($categorie as $k)
+    {
+        $condition = "id_categorie = '%s'";
+        $conditions[] =sprintf($condition,$k); 
+    }
+    $sql = "SELECT * FROM final_objet" ;
+    $sql = $sql." where ";
+    $sql = $sql.implode( " or " ,$conditions); 
+    $result = request_to_array($sql);
+    return $result;
+}
+
+function getListCategorie()
+{
+    $sql = "SELECT * FROM final_categorie_objet";
+    $result = request_to_array($sql);
+    return $result;
+}
