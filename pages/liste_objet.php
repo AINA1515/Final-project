@@ -3,12 +3,12 @@ require("../inc/function.php");
 
 session_start();
 
-if(!isset($_SESSION["membre"])){
+if (!isset($_SESSION["membre"])) {
     header("Location: ../index.php");
 }
 
 
-if(!isset($_POST['categorie'])){
+if (!isset($_POST['categorie'])) {
     $liste_objet = getListObjet();
 } else {
     $liste_objet = getFilteredListObjet($_POST['categorie']);
@@ -39,14 +39,14 @@ $allcategorie = getListCategorie();
             <div class="row mb-4">
                 <form action="liste_objet.php" method="post" class="row mt-3">
                     <h1>Filtre par Categorie</h1>
-                    <?php foreach($allcategorie as $categorie){?>
-                    <div class="form-check col">
-                        <input class="form-check-input" name="categorie[]" id="<?= $categorie["id_categorie"]?>" type="checkbox" value="<?= $categorie["id_categorie"]?>" id="flexCheckChecked">
-                        <label class="form-check-label" for="<?= $categorie["id_categorie"]?>">
-                          <?= $categorie["nom_categorie"]?>
-                        </label>
-                    </div>
-                    <?php }?>
+                    <?php foreach ($allcategorie as $categorie) { ?>
+                        <div class="form-check col">
+                            <input class="form-check-input" name="categorie[]" id="<?= $categorie["id_categorie"] ?>" type="checkbox" value="<?= $categorie["id_categorie"] ?>" id="flexCheckChecked">
+                            <label class="form-check-label" for="<?= $categorie["id_categorie"] ?>">
+                                <?= $categorie["nom_categorie"] ?>
+                            </label>
+                        </div>
+                    <?php } ?>
                     <div class="col-12">
                         <input type="submit" value="Filtrer" class="btn btn-primary">
                     </div>

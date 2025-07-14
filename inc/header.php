@@ -19,8 +19,12 @@ if (isset($_SESSION['membre'])) {
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="../pages/ajouter_objet.php">Ajout d'objet</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../traitement/deconnexion.php">Deconnexion</a>
                 </li>
+                
             </ul>
         </div>
     </div>
