@@ -45,12 +45,6 @@
                 </div>
 
                 <div class="col-md-12">
-                    <label for="ville" class="form-label">Ville: </label>
-                    <input type="text" name="ville" id="ville" class="form-control" required>
-                </div>
-
-
-                <div class="col-md-12">
                     <label for="pdp" class="form-label">Photo de Profil: </label>
                     <input type="file" name="pdp" id="pdp" class="form-control" accept="image/*">
                 </div>

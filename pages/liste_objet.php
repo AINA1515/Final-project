@@ -3,8 +3,18 @@ require("../inc/function.php");
 
 session_start();
 
-$liste_objet = getListObjet();
+if(!isset($_SESSION["idMembre"])){
+    header("Location: ../index.php");
+}
+
+if(!isset($_GET['categorie'])){
+    $liste_objet = getListObjet();
+} else {
+    $liste_objet = getFilteredListObjet($_GET['categorie']);
+}
+
 $allcategorie = getListCategorie();
+
 ?>
 
 <!DOCTYPE html>

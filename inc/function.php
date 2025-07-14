@@ -54,7 +54,7 @@ function getDateDiff($date)
 
 function savefile($fichier)
 {
-    $uploadDir = __DIR__ . '/../uploads/';
+    $uploadDir = __DIR__ . '/../assets/uploads/';
     $maxSize = 300 * 1024 * 1024; // 300 Mo
     $allowedMimeTypes = ['image/jpeg', 'image/png'];
     // Vérifie si un fichier est soumis
@@ -136,11 +136,6 @@ function log_in($logInfo)
     $sql = "SELECT id_membre, email, mdp FROM final_membre WHERE email = '%s' AND mdp = '%s'";
     $sql = sprintf($sql, $logInfo['email'], $logInfo['mdp']);
 
-    $nbresult = count_result($sql);
     $result = fetch_result($sql);
-
-    if ($nbresult == 0) {
-        return ["idMembre" => -1];
-    }
     return $result;
 }

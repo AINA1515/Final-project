@@ -11,8 +11,9 @@ $logInfo['email'] = $_POST["email"];
 $logInfo['mdp'] = $_POST["mdp"];
 
 $result = log_in($logInfo);
-if ($result['idMembre'] != -1) {
-    $_SESSION['idMembre'] = $result['idmembre'];
+
+if($result != null){
+    $_SESSION['id_membre'] = $result['id_membre'];
+    header("Location:../pages/liste_objet.php");
 }
 
-header("Location:../pages/liste_objet.php");

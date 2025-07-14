@@ -7,4 +7,10 @@ TACHE:
         _liste tout les objets avec la date de retour en cas d'emprunt (ok)
 
     _ ajout d'un filtre par categorie pour la liste d'objets (wip)
+    
+
+    _traitement
+        _inscription (ok)
+        _connexion (ok)
+        _filtre(wip)
 

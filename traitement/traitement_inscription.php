@@ -17,6 +17,6 @@ $inscription['image_profil'] = $name;
 
 inscription($inscription);
 
-header("Location: ../pages/liste_objet.php");
+header("Location: ../pages/connexion.php");
 
 ?>
