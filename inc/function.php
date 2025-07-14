@@ -155,7 +155,7 @@ function addObjet($objet)
     $id_objet = fetch_result($id_objet);
 
     if (isset($objet['nom_image'])) {
-        echo addImageObjet($id_objet['id_objet'], $objet['nom_image']);
+        return addImageObjet($id_objet['id_objet'], $objet['nom_image']);
     }
 
 }

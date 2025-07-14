@@ -14,7 +14,7 @@ $objet["id_membre"] = $_SESSION["membre"]["id_membre"];
 
 var_dump($objet);
 
-addObjet($objet);
+echo addObjet($objet);
 
 // header("location:../pages/liste_objet.php");
 ?>
