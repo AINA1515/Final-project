@@ -122,3 +122,25 @@ function getListCategorie()
     $result = request_to_array($sql);
     return $result;
 }
+
+
+function inscription($inscription)
+{
+    $sql = "INSERT INTO final_membre (nom, date_de_naissance, email, genre,ville,mdp,image_profil) VALUES ('%s', '%s', '%s', '%s','%s','%s', '%s')";
+    $sql = sprintf($sql, $inscription['nom'], $inscription['dtn'], $inscription['email'], $inscription['genre'], $inscription["ville"], $inscription["mdp"], $inscription["image_profil"]);
+    make_request($sql);    
+}
+
+function log_in($logInfo)
+{
+    $sql = "SELECT id_membre, email, mdp FROM final_membre WHERE email = '%s' AND mdp = '%s'";
+    $sql = sprintf($sql, $logInfo['email'], $logInfo['mdp']);
+
+    $nbresult = count_result($sql);
+    $result = fetch_result($sql);
+
+    if ($nbresult == 0) {
+        return ["idMembre" => -1];
+    }
+    return $result;
+}

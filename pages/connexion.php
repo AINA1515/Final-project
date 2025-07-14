@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="col-md-12">
-                    <label for="pdp" class="form-label">Photo de Profil: </label>
-                    <input type="file" name="pdp" id="pdp" class="form-control" accept="image/*">
+                    <label for="mdp" class="form-label">Mot de Passe: </label>
+                    <input type="password" name="mdp" id="mdp" class="form-control" accept="image/*">
                 </div>
 
                 <div class="col-md-9">

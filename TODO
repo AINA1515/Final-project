@@ -6,5 +6,5 @@ TACHE:
     _page liste objets:
         _liste tout les objets avec la date de retour en cas d'emprunt (ok)
 
-    _ ajout d'un filtre par categorie pour la liste d'objets ()
+    _ ajout d'un filtre par categorie pour la liste d'objets (wip)
 
