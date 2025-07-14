@@ -57,6 +57,7 @@ $allcategorie = getListCategorie();
                 <div class="col-9 row">
                     <?php foreach ($liste_objet as $objet) { ?>
                         <div class="col-md-4 mb-3">
+                            <a href="fiche_objet.php?id_objet=<?= $objet['id_objet'] ?>">
                             <div class="card">
                                 <img src="../assets/uploads/<?= $objet['nom_image'] ?: "default_object.png"; ?>" class="card-img-top thumbnails" alt="<?= $objet['nom']; ?>">
 
@@ -71,6 +72,7 @@ $allcategorie = getListCategorie();
 
                                 </div>
                             </div>
+                            </a>
                         </div>
                     <?php } ?>
                 </div>

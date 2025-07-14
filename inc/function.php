@@ -101,6 +101,26 @@ function getListObjet()
     return $result;
 }
 
+function getObjet($id_objet)
+{
+    $sql = "select fi.nom_image, from final_image_objet fi join final_objet fo on fi.id_objet = fo.id_objet where fo.id_objet = '%s'";
+    $sql = sprintf($sql, $id_objet);
+    $result = fetch_result($sql);
+    if ($result) {
+        return $result;
+    } else {
+        return false;
+    }
+}
+
+function getAllImageObjet($id_membre)
+{
+    $sql = "select * from final_images_objet where id_objet in (select id_objet from final_objet where id_membre = '%s')";
+    $sql = sprintf($sql, $id_membre);
+    $result = request_to_array($sql);
+    return $result;
+}
+
 function getFilteredListObjet($categorie)
 {
     $conditions = array();
