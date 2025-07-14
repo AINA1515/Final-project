@@ -12,7 +12,9 @@ $objet["id_categorie"] = $_POST["id_categorie"];
 $objet["nom_image"] = savefile($_FILES["nom_image"]);
 $objet["id_membre"] = $_SESSION["membre"]["id_membre"];
 
-addObjet($objet);
+var_dump($objet);
 
-header("location:../pages/liste_objet.php");
+echo addObjet($objet);
+
+// header("location:../pages/liste_objet.php");
 ?>
