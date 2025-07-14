@@ -37,10 +37,19 @@ create table
     final_images_objet (
         id_image int AUTO_INCREMENT,
         id_objet int,
+        nom_image int,
+        primary key (id_image),
+        FOREIGN KEY (id_objet) REFERENCES final_objet (id_objet) ON DELETE CASCADE
+    );
+
+create table 
+    final_emprunt(
+        id_emprunt int AUTO_INCREMENT,
+        id_objet int,
         id_membre int,
         date_emprunt date,
         date_retour date,
-        primary key (id_image),
+        primary key(id_emprunt),
         FOREIGN KEY (id_objet) REFERENCES final_objet (id_objet) ON DELETE CASCADE,
         FOREIGN KEY (id_membre) REFERENCES final_membre (id_membre) ON DELETE CASCADE
     );

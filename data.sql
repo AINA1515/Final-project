@@ -99,43 +99,20 @@ VALUES
 
 
 --EMPRUNTS
-
--- Emprunt 1: Jean emprunte un objet de Marie (Machine à café)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (1, 18, 1, '2023-05-10', '2023-05-17');
-
--- Emprunt 2: Marie emprunte un objet de Pierre (Friteuse sans huile)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (2, 28, 2, '2023-06-15', '2023-06-22');
-
--- Emprunt 3: Pierre emprunte un objet de Sophie (Grille-pain professionnel)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (3, 40, 3, '2023-07-01', '2023-07-08');
-
--- Emprunt 4: Sophie emprunte un objet de Jean (Robot multifonction)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (4, 8, 4, '2023-08-12', '2023-08-19');
-
--- Emprunt 5: Jean emprunte un objet de Pierre (Outil de diagnostic voiture)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (5, 26, 1, '2023-09-05', '2023-09-12');
-
--- Emprunt 6: Marie emprunte un objet de Sophie (Autocuiseur électrique)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (6, 38, 2, '2023-10-20', '2023-10-27');
-
--- Emprunt 7: Pierre emprunte un objet de Marie (Blender haute puissance)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (7, 19, 3, '2023-11-15', '2023-11-22');
-
--- Emprunt 8: Sophie emprunte un objet de Jean (Sèche-cheveux professionnel)
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (8, 1, 4, '2023-12-01', '2023-12-08');
-
--- Emprunt 9: Jean emprunte un objet de Sophie (Visseuse sans fil) - emprunt en cours
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (9, 33, 1, '2024-01-10', NULL);
-
--- Emprunt 10: Marie emprunte un objet de Pierre (Chandelles de garage) - emprunt en cours
-INSERT INTO final_images_objet (id_image, id_objet, id_membre, date_emprunt, date_retour)
-VALUES (10, 27, 2, '2024-01-15', NULL);
+INSERT INTO final_emprunt (id_objet, id_membre, date_emprunt, date_retour)
+VALUES
+-- Esthetique
+(1, 2, '2024-06-01', '2024-06-10'),
+(11, 3, '2024-06-02', '2024-06-12'),
+-- Bricolage
+(4, 3, '2024-06-03', '2024-06-13'),
+(15, 4, '2024-06-04', '2024-06-14'),
+-- Mecanique
+(7, 4, '2024-06-05', '2024-06-15'),
+(18, 1, '2024-06-06', '2024-06-16'),
+-- Cuisine
+(9, 1, '2024-06-07', '2024-06-17'),
+(20, 2, '2024-06-08', '2024-06-18'),
+-- Divers (répartition)
+(13, 1, '2024-06-09', '2024-06-19'),
+(17, 2, '2024-06-10', '2024-06-20');

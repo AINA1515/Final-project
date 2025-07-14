@@ -4,7 +4,7 @@ TACHE:
             _inscription(nom, date de naissance, genre, email, ville, mdp, pdp) (ok)
             _login (email, mdp) (ok)
     _page liste objets:
-        _liste tout les objets avec la date de retour en cas d'emprunt
+        _liste tout les objets avec la date de retour en cas d'emprunt (ok)
 
     _ ajout d'un filtre par categorie pour la liste d'objets ()
 

@@ -92,8 +92,11 @@ function savefile($fichier)
 
 function getListObjet()
 {
-    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.* 
-            FROM final_objet f join final_membre m where f.id_membre = m.id_membre";
+    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
+            FROM final_objet f JOIN final_membre m ON f.id_membre = m.id_membre
+            JOIN final_categorie_objet c ON f.id_categorie = c.id_categorie
+            LEFT JOIN final_images_objet i ON f.id_objet = i.id_objet
+            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet";
     $result = request_to_array($sql);
     return $result;
 }
