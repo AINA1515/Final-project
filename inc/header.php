@@ -1,6 +1,14 @@
+<?php
+if (isset($_SESSION['membre'])) {
+    $membre = $_SESSION['membre'];
+}
+?>
+
 <nav class="navbar navbar-expand-lg bg-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../assets/images/house-fill.svg" style="width: 25px;" alt=""></a>
+        <div class="navbar-brand">
+            <span>User: <a href="#" class="link-underline link-underline-opacity-0"> <?= $membre['nom'] ?></a></span>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,19 +19,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/statistics.php">Statistics</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#footer">Contact</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/resultat_recherche.php?nom=&prenom=&ageMin=&ageMax=&departement=-1">Employees</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/recherche.php">Search</a>
+                    <a class="nav-link" href="../traitement/deconnexion.php">Deconnexion</a>
                 </li>
             </ul>
         </div>

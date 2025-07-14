@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
     <main>
         <div class="container">
             <form action="../traitement/traitement_inscription.php" method="post" enctype="multipart/form-data" class="row mt-4">

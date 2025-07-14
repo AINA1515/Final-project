@@ -106,10 +106,14 @@ function getFilteredListObjet($categorie)
     $conditions = array();
     foreach($categorie as $k)
     {
-        $condition = "id_categorie = '%s'";
-        $conditions[] =sprintf($condition,$k); 
+        $condition = "f.id_categorie = '%s'";
+        $conditions[] =sprintf($condition, $k); 
     }
-    $sql = "SELECT * FROM final_objet" ;
+    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
+            FROM final_objet f JOIN final_membre m ON f.id_membre = m.id_membre
+            JOIN final_categorie_objet c ON f.id_categorie = c.id_categorie
+            LEFT JOIN final_images_objet i ON f.id_objet = i.id_objet
+            LEFT JOIN final_emprunt e ON f.id_objet = e.id_objet";
     $sql = $sql." where ";
     $sql = $sql.implode( " or " ,$conditions); 
     $result = request_to_array($sql);
@@ -133,7 +137,7 @@ function inscription($inscription)
 
 function log_in($logInfo)
 {
-    $sql = "SELECT id_membre, email, mdp FROM final_membre WHERE email = '%s' AND mdp = '%s'";
+    $sql = "SELECT id_membre, email, nom, date_de_naissance, image_profil, genre, ville FROM final_membre WHERE email = '%s' AND mdp = '%s'";
     $sql = sprintf($sql, $logInfo['email'], $logInfo['mdp']);
 
     $result = fetch_result($sql);

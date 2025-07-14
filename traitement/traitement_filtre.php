@@ -7,11 +7,9 @@ if(!isset($_POST['categorie'])){
 } else {
     
     $categorie = $_POST['categorie'];
-    header("Location: ../pages/liste_objet.php?categorie=".$categorie);
+    var_dump($categorie);
+    // header("Location: ../pages/liste_objet.php?categorie=".$categorie);
 
 }
-
-
-
 
 ?>

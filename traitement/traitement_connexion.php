@@ -13,7 +13,7 @@ $logInfo['mdp'] = $_POST["mdp"];
 $result = log_in($logInfo);
 
 if($result != null){
-    $_SESSION['id_membre'] = $result['id_membre'];
+    $_SESSION['membre'] = $result;
     header("Location:../pages/liste_objet.php");
 }
 

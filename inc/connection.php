@@ -5,6 +5,8 @@ function dbconnect()
     $bdd_name = "finalbase";
     $mdp = "";
     $user = "root";
+    // $mdp = "Mk5HiACY";
+    // $user = "ETU004316";
     $host = "localhost";
 
 
