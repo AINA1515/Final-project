@@ -63,14 +63,21 @@ $allcategorie = getListCategorie();
                                         <img src="../assets/uploads/<?= $objet['nom_image'] ?: "default_object.png"; ?>" class="card-img-top thumbnails" alt="<?= $objet['nom']; ?>">
 
                                         <div class="card-body">
+                                            <?php if (getIfEmpreinter($objet)) {
+                                                echo "dispo le " . $objet['date_retour'];
+                                            } else { ?>
+                                                <a href="emprunt.php?id_objet=<?= $objet["id_objet"] ?>">emprunter</a>
+                                            <?php }
+                                            ?>
                                             <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
                                             <p class="card-text">Catégorie: <?= $objet['nom_categorie']; ?></p>
                                             <p class="card-text">Membre: <?= $objet['nom']; ?></p>
                                             <?php if (isset($objet['date_emprunt'])) { ?>
-                                                <span class="badge bg-warning position-absolute top-0 end-0 m-2">Non Disponible</span>
+                                                <span class="badge bg-warning position-absolute top-0 end-0 m-2">Disponible dans </span>
                                                 <p class="card-text">Date de retour: <?= $objet['date_retour'] ?></p>
-                                            <?php } ?>
-
+                                            <?php } else{?>
+                                                <p class="badge bg-warning position-absolute top-0 end-0 m-2">disponible</p>
+                                                <?php }?>
                                         </div>
                                     </div>
                                 </a>

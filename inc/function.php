@@ -103,7 +103,7 @@ function getListObjet()
 
 function getObjet($id_objet)
 {
-    $sql = "select fi.nom_image,fo.id_objet from final_images_objet fi right join final_objet fo on fi.id_objet = fo.id_objet where fo.id_objet = '%s'";
+    $sql = "select fi.*,fo.* from final_images_objet fi right join final_objet fo on fi.id_objet = fo.id_objet where fo.id_objet = '%s'";
     $sql = sprintf($sql, $id_objet);
     $result = fetch_result($sql);
         return $result;
@@ -126,7 +126,7 @@ function getFilteredListObjet($categorie)
         $condition = "f.id_categorie = '%s'";
         $conditions[] =sprintf($condition, $k); 
     }
-    $sql = "SELECT f.id_objet,f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
+    $sql = "SELECT distinct f.id_objet,f.nom_objet,f.id_categorie,m.*, e.date_emprunt, e.date_retour, c.nom_categorie, i.nom_image, i.id_image 
             FROM final_objet f JOIN final_membre m ON f.id_membre = m.id_membre
             JOIN final_categorie_objet c ON f.id_categorie = c.id_categorie
             LEFT JOIN final_images_objet i ON f.id_objet = i.id_objet
@@ -139,7 +139,7 @@ function getFilteredListObjet($categorie)
 
 function getListCategorie()
 {
-    $sql = "SELECT * FROM final_categorie_objet";
+    $sql = "SELECT  * FROM final_categorie_objet";
     $result = request_to_array($sql);
     return $result;
 }
@@ -183,4 +183,41 @@ function addImageObjet($id_objet, $image)
     $sql = sprintf($sql, $id_objet, $image);
     make_request($sql);
     return $sql;
+}
+
+function getIfEmpreinter($objet)
+{
+    $sql = "SELECT * FROM final_emprunt WHERE id_objet = '%s' AND date_retour IS NULL";
+    $sql = sprintf($sql, $objet["id_objet"]);
+    $result = fetch_result($sql);
+    if(count_result($sql)>0)
+    {
+        return true;
+    }
+    else{
+        false;
+    }
+}
+
+function calculEmpreint($nbrjour)
+{
+    $sql = "SELECT DATE_ADD(NOW(), INTERVAL '%s' DAY) AS date_retour";
+    $sql = sprintf($sql, $nbrjour);
+    $result = fetch_result($sql);
+    return $result['date_retour'];
+}
+
+function calculdatederetour($nbrjour,$id_objet)
+{
+    $sql = "insert into final_emprunt (id_objet,date_emprunt,date_retour) values ('%s',NOW(),DATE_ADD(NOW(), INTERVAL '%s' DAY))";
+    $sql = sprintf($sql, $id_objet, $nbrjour);
+    make_request($sql);
+}
+
+function calculDifferencedeDate($emprunt)
+{
+    $sql = "select DATE_DIFF('%s', NOW()) as diff";
+    $sql = sprintf($sql, $emprunt["date_retour"]);
+    $result = fetch_result($sql);
+    return $result['diff'];
 }
